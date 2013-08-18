@@ -1,0 +1,30 @@
+{
+  "name": "stravamailer",
+  "version": "0.0.1",
+  "description": "Email transformation for easy Strava upload via email API. stravamailer.herokuapp.com.\"",
+  "main": "app.coffee",
+  "dependencies": {
+    "coffee": "~0.0.1",
+    "nconf": "~0.6.7",
+    "nodemailer": "~0.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "EMAIL_USERNAME=<username> EMAIL_PASSWORD=<password> node app.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewhao/stravamailer"
+  },
+  "keywords": [
+    "email",
+    "javascript",
+    "strava",
+    "fitness",
+    "service"
+  ],
+  "author": "Andrew Hao",
+  "license": "MIT",
+  "gitHead": "2a939f05e6b129c212b2f3630092e63ff16d49a0",
+  "readmeFilename": "README.md"
+}
