@@ -5,12 +5,13 @@ nodemailer = require "nodemailer"
 nconf.argv().env()
 
 smtpTransport = nodemailer.createTransport("SMTP",
-  service: "hotmail"
+  service: nconf.get("EMAIL_SERVICE")
   auth:
     user: nconf.get("EMAIL_USERNAME")
     pass: nconf.get("EMAIL_PASSWORD")
 )
 
+console.log nconf.get("EMAIL_SERVICE")
 console.log nconf.get("EMAIL_USERNAME")
 console.log nconf.get("EMAIL_PASSWORD")
 
@@ -19,6 +20,11 @@ mailOptions =
   to: "andrewhao@gmail.com"
   subject: "stravaizer test"
   text: "This is a test from: #{new Date().toISOString()}"
+  attachments: [
+    {
+      filePath: "sample.gpx"
+    }
+  ]
 
 smtpTransport.sendMail(mailOptions, (error, response) ->
   if (error)
