@@ -31,6 +31,7 @@ app.post("/incoming", (request, response) ->
   im = new IncomingMessage(request.body)
   console.log "from: #{im.from()}"
   console.log "body: #{im.body()}"
+  response.send("OK")
 )
 
 port = nconf.get("PORT") || 5000
