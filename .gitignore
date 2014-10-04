@@ -6,7 +6,7 @@ lib-cov
 *.out
 *.pid
 *.gz
-uploads/
+uploads/*.gpx
 pids
 logs
 results
