@@ -1,6 +1,8 @@
 nconf = require "nconf"
 nodemailer = require "nodemailer"
 express = require "express"
+Mailer = require "./models/Mailer"
+IncomingMessage = require "./models/IncomingMessage"
 
 # Pull arguments off the command line and the environment.
 nconf.argv().env()
@@ -16,12 +18,19 @@ console.log nconf.get("EMAIL_SERVICE")
 console.log nconf.get("EMAIL_USERNAME")
 console.log nconf.get("EMAIL_PASSWORD")
 
-app = express()
+mailer = new Mailer(smtpTransport)
 
+app = express()
 app.use(express.logger())
+app.use(express.bodyParser())
 
 app.get('/', (request, response) ->
   response.send("We're coming soon!")
+)
+app.post("/incoming", (request, response) ->
+  im = new IncomingMessage(request.body)
+  console.log "from: #{im.from}"
+  console.log "body: #{im.body}"
 )
 
 port = nconf.get("PORT") || 5000
@@ -30,25 +39,5 @@ console.log "port is #{port}"
 app.listen(port, ->
   console.log "listening on #{port}"
 )
-
-mailOptions =
-  from: "andrewhao@gmail.com"
-  to: "andrewhao@gmail.com"
-  subject: "stravaizer test"
-  text: "This is a test from: #{new Date().toISOString()}"
-  attachments: [
-    {
-      filePath: "sample.gpx"
-    }
-  ]
-
-sendMail = ->
-  smtpTransport.sendMail(mailOptions, (error, response) ->
-    if (error)
-      console.log(error)
-    else
-      console.log("message sent: #{response.message}")
-      smtpTransport.close()
-  )
 
 
