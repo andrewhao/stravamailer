@@ -1,6 +1,8 @@
 stravamailer
 ============
 
+[![Build Status](https://travis-ci.org/andrewhao/stravamailer.svg)](https://travis-ci.org/andrewhao/stravamailer)
+
 Upload GPX tracks to Strava using an email interface that supports GPX attachments and links.
 
 ### Mail address

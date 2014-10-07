@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Email transformation for easy Strava upload via email API. stravamailer.herokuapp.com.\"",
   "main": "app.coffee",
+  "engines": {
+    "node": "0.11.x"
+  },
   "dependencies": {
     "coffee-script": "~1.6.3",
     "nconf": "~0.6.7",
