@@ -39,7 +39,9 @@ app.post("/incoming", (request, response) ->
 
   # In the future, we should queue this bad boy up.
   gpx = new GpxDownloader(parser.gpxLink())
-  gpx.download()
+  gpx.download(filePath, ->
+    mailer.sendMail("hello", "gpx file attached", filePath)
+  )
   response.send("OK")
 )
 

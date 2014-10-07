@@ -4,7 +4,6 @@ class EmailParser
   regex: /http.*\.gpx/
   gpxLink: ->
     ma = @message.match(@regex)
-    console.log "Match is: #{ma}"
     return null if ma is null
     ma[0]
 

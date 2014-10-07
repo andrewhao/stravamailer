@@ -3,7 +3,7 @@ class Mailer
   constructor: (@transport) ->
 
   src: "andrewhao@gmail.com"
-  dst: "andrewhao@gmail.com"
+  dst: "upload@strava.com"
 
   sendMail: (subject="", message="", attachmentPath="sample.gpx") ->
     mailOptions =

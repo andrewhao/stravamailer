@@ -11,10 +11,9 @@ class GpxDownloader
     parts = @link.split("/")
     filename = parts.pop()
     path = "#{@basePath}/#{filename}"
-    console.log("dest is: #{path}")
     path
 
-  download: (url, dest, cb) ->
+  download: (cb) ->
     file = fs.createWriteStream(@dest())
     request = http.get(@link, (response) ->
       response.pipe file
