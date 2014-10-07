@@ -17,10 +17,10 @@ class GpxDownloader
   #   takes an argument to the file path of the newly downloaded file.
   download: (cb) ->
     file = fs.createWriteStream(@dest())
-    request = http.get(@link, (response) ->
+    request = http.get(@link, (response) =>
       response.pipe file
-      file.on "finish", ->
-        file.close ->
+      file.on "finish", =>
+        file.close =>
           cb(@dest())
     )
 
