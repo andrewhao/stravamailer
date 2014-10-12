@@ -17,7 +17,7 @@ class Mailer
         }
       ]
 
-    @transport.sendMail(mailOptions, (error, response) ->
+    @transport.sendMail(mailOptions, (error, response) =>
       if (error)
         console.log(error)
       else
