@@ -1,9 +1,11 @@
-stravamailer
-============
+Velocitas
+=========
 
-[![Build Status](https://travis-ci.org/andrewhao/stravamailer.svg)](https://travis-ci.org/andrewhao/stravamailer)
+[![Build Status](https://travis-ci.org/andrewhao/velocitas.svg)](https://travis-ci.org/andrewhao/velocitas)
 
 Upload GPX tracks to Strava using an email interface that supports GPX attachments and links.
+
+In the future, get this app crankin' on building GPX, training stats
 
 ### Mail address
 
