@@ -56,10 +56,16 @@ app.post("/incoming", (request, response) ->
 
   # In the future, we should queue this bad boy up.
   gpx = new GpxDownloader(parser.gpxLink())
+  key = process.env.DROPBOX_KEY
+  secret = process.env.DROPBOX_SECRET
+  token = process.env.DROPBOX_SECRET_TOKEN
+  dropboxUploader = new DropboxUploader(key, secret, token)
   stravaUploader = new StravaUploader
   gpx.download((filePath) ->
-    stravaUploader.upload(filePath, ->
-      mailer.sendMail("hello", "gpx file attached", filePath)
+    dropboxUploader.upload(filePath, ->
+      stravaUploader.upload(filePath, ->
+        mailer.sendMail("hello", "gpx file attached", filePath)
+      )
     )
   )
   response.send("OK")
