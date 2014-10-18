@@ -19,8 +19,15 @@ describe "GpxDownloader", ->
   describe "#download", ->
     it "downloads to the uploads/ directory", (done) ->
       expect(fs.existsSync(@downloadPath)).to.be.false
-      @subject.download(done)
-      expect(fs.existsSync(@downloadPath)).to.be.true
+      @subject.download(=>
+        fs.exists(@downloadPath, (exists) ->
+          expect(exists).to.be.true
+        )
+        done()
+      )
 
-    xit "calls the finish callback with the downloaded file", (done) ->
-      @subject.download(done)
+    it "calls the finish callback with the downloaded file", (done) ->
+      @subject.download((uploadFile) =>
+        expect(uploadFile).to.equal(@downloadPath)
+        done()
+      )
