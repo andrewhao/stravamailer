@@ -10,6 +10,7 @@ Mailer = require "./models/Mailer"
 GpxDownloader = require "./services/GpxDownloader"
 EmailParser = require "./services/EmailParser"
 IncomingMessage = require "./models/IncomingMessage"
+StravaUploader = require "./services/StravaUploader"
 
 # Pull arguments off the command line and the environment.
 nconf.argv().env()
@@ -53,8 +54,11 @@ app.post("/incoming", (request, response) ->
 
   # In the future, we should queue this bad boy up.
   gpx = new GpxDownloader(parser.gpxLink())
+  stravaUploader = new StravaUploader
   gpx.download((filePath) ->
-    mailer.sendMail("hello", "gpx file attached", filePath)
+    stravaUploader.upload(filePath, ->
+      mailer.sendMail("hello", "gpx file attached", filePath)
+    )
   )
   response.send("OK")
 )
@@ -67,5 +71,4 @@ console.log "port is #{port}"
 app.listen(port, ->
   console.log "listening on #{port}"
 )
-
 
