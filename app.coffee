@@ -3,14 +3,16 @@ nodemailer = require "nodemailer"
 express = require "express"
 strava = require "strava-v3"
 
-dotenv = require 'dotenv'
-dotenv.load()
-
+# Load app files and settings.
 Mailer = require "./models/Mailer"
 GpxDownloader = require "./services/GpxDownloader"
 EmailParser = require "./services/EmailParser"
 IncomingMessage = require "./models/IncomingMessage"
 StravaUploader = require "./services/StravaUploader"
+
+# Load environment vars from .env file.
+dotenv = require 'dotenv'
+dotenv.load()
 
 # Pull arguments off the command line and the environment.
 nconf.argv().env()
