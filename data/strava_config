@@ -1,0 +1,6 @@
+{
+"access_token": "f7b9e793961a19646f912dadf34e3d91729416c4",
+"client_id": 3295,
+"client_secret": "09403aed87af861492a7fe87077dce4867e1dcdb",
+"redirect_uri": "https://velocitas.herokuapp.com/strava_oauth"
+}

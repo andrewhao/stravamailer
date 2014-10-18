@@ -1,9 +1,10 @@
 nconf = require "nconf"
 nodemailer = require "nodemailer"
 express = require "express"
+strava = require "strava-v3"
 
-DotEnv = require('dotenv-node')
-new DotEnv()
+dotenv = require 'dotenv'
+dotenv.load()
 
 Mailer = require "./models/Mailer"
 GpxDownloader = require "./services/GpxDownloader"
