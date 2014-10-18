@@ -19,7 +19,9 @@
   },
   "devDependencies": {
     "mocha": "~1.12",
-    "chai": "~1.9.2"
+    "chai": "~1.9.2",
+    "dropbox-mock": "0.0.7",
+    "rewire": "~2.1.0"
   },
   "scripts": {
     "test": "mocha test --recursive --compilers coffee:coffee-script"
