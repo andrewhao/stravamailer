@@ -1,6 +1,11 @@
 nconf = require "nconf"
 nodemailer = require "nodemailer"
 express = require "express"
+strava = require "strava-v3"
+
+dotenv = require 'dotenv'
+dotenv.load()
+
 Mailer = require "./models/Mailer"
 GpxDownloader = require "./services/GpxDownloader"
 EmailParser = require "./services/EmailParser"
@@ -23,14 +28,23 @@ console.log nconf.get("EMAIL_PASSWORD")
 mailer = new Mailer(smtpTransport)
 
 app = express()
-app.use("/uploads", express.static('uploads'))
-app.use("/uploads", express.directory('uploads'))
 app.use(express.logger())
 app.use(express.bodyParser())
 
 app.get('/', (request, response) ->
-  response.send("We're coming soon!")
+  url = strava.oauth.getRequestAccessURL({scope:"view_private write"})
+  response.send("<a href='#{url}'>Log in with Strava</a>")
 )
+
+# OAuth callback endpoint for Strava.
+app.get("/strava_oauth", (request, response) ->
+  code = request.param('code')
+  strava.oauth.getToken(code, (err,payload) ->
+    console.log(payload)
+    response.send(payload)
+  )
+)
+
 app.post("/incoming", (request, response) ->
   im = new IncomingMessage(request.body)
   console.log "from: #{im.from()}"
