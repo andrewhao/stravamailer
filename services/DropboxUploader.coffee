@@ -32,10 +32,14 @@ class DropboxUploader
   upload: (filePath, doneCb) ->
     nameParts = filePath.split("/")
     fileName = nameParts[nameParts.length - 1]
-    @client().writeFile(fileName, filePath, (err, stat) =>
+    fs.readFile(filePath, (err, data) =>
       return @showError(err) if err
-      console.log(util.inspect(stat))
-      doneCb()
+
+      @client().writeFile(fileName, data, (err, stat) =>
+        return @showError(err) if err
+        console.log(util.inspect(stat))
+        doneCb()
+      )
     )
 
   showError: (error) ->
