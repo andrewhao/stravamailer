@@ -27,6 +27,7 @@
     "gulp-watch": "^4.1.0",
     "mocha": "~1.12",
     "node-fakeweb": "0.0.20",
+    "request": "^2.51.0",
     "rewire": "~2.1.0",
     "sinon": "^1.12.2"
   },

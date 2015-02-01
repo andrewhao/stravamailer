@@ -10,7 +10,7 @@ gulp.task('test', function() {
 });
 
 gulp.task('watch', function() {
-  return gulp.watch(["test/**/*"], ['test']);
+  return gulp.watch(["test/**/*", "services/**/*"], ['test']);
 });
 
 gulp.task('default', ['test']);
