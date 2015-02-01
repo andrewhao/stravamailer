@@ -1,8 +1,14 @@
 https = require "https"
 
 class CartoDbUploader
+  constructor: ->
   upload: (file, link, cb) ->
+    console.log("CartoDbUploader initializing")
+    console.log file
+    console.log link
+    console.log cb
     payload = { "url": link }
+    console.log payload
     req = https.request({
       method: "POST"
       hostname: "velocitas.cartodb.com"
@@ -14,7 +20,8 @@ class CartoDbUploader
         console.log('Response: ' + chunk)
       )
     )
-    console.log("Writing payload: #{payload.inspect}")
+    console.log("Writing payload:")
+    console.log payload
     req.write(payload)
     req.end()
     cb()
