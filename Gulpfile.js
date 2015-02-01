@@ -9,4 +9,8 @@ gulp.task('test', function() {
   })).on("error", console.warn.bind(console));
 });
 
+gulp.task('watch', function() {
+  return gulp.watch(["test/**/*"], ['test']);
+});
+
 gulp.task('default', ['test']);

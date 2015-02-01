@@ -54,18 +54,22 @@ app.post("/incoming", (request, response) ->
   console.log "from: #{im.from()}"
   console.log "body: #{im.body()}"
   parser = new EmailParser(im.body())
+  linkUrl = parser.gpxLink()
 
   # In the future, we should queue this bad boy up.
-  gpx = new GpxDownloader(parser.gpxLink())
+  gpx = new GpxDownloader(linkUrl)
   key = process.env.DROPBOX_KEY
   secret = process.env.DROPBOX_SECRET
   token = process.env.DROPBOX_SECRET_TOKEN
   dropboxUploader = new DropboxUploader(key, secret, token)
   stravaUploader = new StravaUploader
+  cartoDbUploader = new CartoDbUploader
   gpx.download((filePath) ->
     dropboxUploader.upload(filePath, ->
       stravaUploader.upload(filePath, ->
-        mailer.sendMail("hello", "gpx file attached", filePath)
+        cartoDbUploader.upload(filePath, linkUrl, ->
+          mailer.sendMail("hello", "gpx file attached", filePath)
+        )
       )
     )
   )
