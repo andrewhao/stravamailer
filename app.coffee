@@ -10,6 +10,7 @@ EmailParser = require "./services/EmailParser"
 IncomingMessage = require "./models/IncomingMessage"
 StravaUploader = require "./services/StravaUploader"
 DropboxUploader = require "./services/DropboxUploader"
+CartoDbUploader = require "./services/CartoDbUploader"
 
 # Load environment vars from .env file.
 dotenv = require 'dotenv'
