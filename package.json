@@ -7,7 +7,7 @@
     "node": "0.11.x"
   },
   "dependencies": {
-    "coffee-script": "~1.6.3",
+    "coffee-script": "~1.7.0",
     "nconf": "~0.6.7",
     "nodemailer": "~0.5.2",
     "express": "~3.3.5",
@@ -18,13 +18,19 @@
     "dropbox": "~0.10.3"
   },
   "devDependencies": {
-    "mocha": "~1.12",
     "chai": "~1.9.2",
     "dropbox-mock": "0.0.7",
-    "rewire": "~2.1.0"
+    "fakeweb": "0.0.1",
+    "gulp": "^3.8.10",
+    "gulp-mocha": "^2.0.0",
+    "gulp-spawn-mocha": "^2.0.1",
+    "mocha": "~1.12",
+    "node-fakeweb": "0.0.20",
+    "rewire": "~2.1.0",
+    "sinon": "^1.12.2"
   },
   "scripts": {
-    "test": "mocha test --recursive --compilers coffee:coffee-script"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
