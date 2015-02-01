@@ -14,7 +14,7 @@ describe "CartoDbUploader", ->
       @file = "foo file"
       @link = "http://share.abvio.com/5e3ba2f14c227d4b/Runmeter-Run-20150122-1205.gpx"
     it "sends a POST to the uploads endpoint", (done) ->
-      api_key = "64aa46209fd4374742178748e6ec3f849e48b61f"
+      api_key = process.env.CARTO_DB_API_KEY || "test_key"
       url = "https://velocitas.cartodb.com/api/v1/imports/?api_key=#{api_key}"
       fakeweb.registerUri({
         headers: "Content-Type: application/json"

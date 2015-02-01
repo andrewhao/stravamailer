@@ -2,6 +2,7 @@ https = require "https"
 
 class CartoDbUploader
   constructor: ->
+    @api_key = process.env.CARTO_DB_API_KEY || "test_key"
   upload: (file, link, cb) ->
     console.log("CartoDbUploader initializing")
     console.log file
@@ -12,7 +13,7 @@ class CartoDbUploader
     req = https.request({
       method: "POST"
       hostname: "velocitas.cartodb.com"
-      path: "/api/v1/imports/?api_key=64aa46209fd4374742178748e6ec3f849e48b61f"
+      path: "/api/v1/imports/?api_key=#{@api_key}"
       headers: {"Content-Type": "application/json"}
     }, (response) ->
       response.setEncoding('utf8')
