@@ -26,8 +26,9 @@ describe "GpxDownloader", ->
         done()
       )
 
-    it "calls the finish callback with the downloaded file", (done) ->
-      @subject.download((uploadFile) =>
+    it "calls the finish callback with the downloaded file and original link", (done) ->
+      @subject.download((uploadFile, link) =>
         expect(uploadFile).to.equal(@downloadPath)
+        expect(link).to.equal(@linkUrl)
         done()
       )

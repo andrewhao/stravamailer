@@ -3,7 +3,7 @@ util = require "util"
 fs = require "fs"
 
 class DropboxUploader
-  constructor: (@key, @secret, @token)->
+  constructor: (@key, @secret, @token) ->
     @token = token || process.env.DROPBOX_SECRET_TOKEN
     console.log "Dropbox Uploader initialized with token #{@token}"
 

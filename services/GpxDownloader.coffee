@@ -21,7 +21,7 @@ class GpxDownloader
       response.pipe file
       file.on "finish", =>
         file.close =>
-          cb(@dest())
+          cb(@dest(), @link)
     )
 
 module.exports = GpxDownloader
