@@ -19,6 +19,4 @@ class CartoDbUploader
     req.end()
     cb()
 
-  payload: ->
-
 module.exports = CartoDbUploader
