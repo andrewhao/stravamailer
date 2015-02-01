@@ -15,7 +15,7 @@
     "strava-v3": "~1.5.2",
     "npm": "~2.1.3",
     "dotenv": "~0.4.0",
-    "dropbox": "~0.10.3"
+    "dropbox": "~0.10.3",
     "request": "^2.51.0"
   },
   "devDependencies": {
