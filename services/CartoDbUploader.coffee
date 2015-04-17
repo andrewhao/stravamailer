@@ -22,6 +22,7 @@ class CartoDbUploader
     ).on("error", (error) ->
       console.log("CartoDbUploader encountered an error:")
       console.log(error)
+      cb()
     ).on("response", (res) ->
       console.log("CartoDbUploader got a response baby. let's do this. Hitting callback:")
       console.log(res)

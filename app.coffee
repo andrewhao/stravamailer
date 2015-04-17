@@ -11,6 +11,7 @@ IncomingMessage = require "./models/IncomingMessage"
 StravaUploader = require "./services/StravaUploader"
 DropboxUploader = require "./services/DropboxUploader"
 CartoDbUploader = require "./services/CartoDbUploader"
+VelocitasApiUploader = require "./services/VelocitasApiUploader"
 
 # Load environment vars from .env file.
 dotenv = require 'dotenv'
@@ -65,11 +66,15 @@ app.post("/incoming", (request, response) ->
   dropboxUploader = new DropboxUploader(key, secret, token)
   stravaUploader = new StravaUploader
   cartoDbUploader = new CartoDbUploader
+  velocitasApiUploader = new VelocitasApiUploader
+
   gpx.download((filePath) ->
     dropboxUploader.upload(filePath, ->
       stravaUploader.upload(filePath, ->
         cartoDbUploader.upload(filePath, linkUrl, ->
-          mailer.sendMail("hello", "gpx file attached", filePath)
+          velocitasApiUploader.upload(filePath, linkUrl, ->
+            mailer.sendMail("hello", "gpx file attached", filePath)
+          )
         )
       )
     )
