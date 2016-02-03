@@ -14,7 +14,7 @@ class VelocitasApiUploader
     console.log options
 
     request.post(
-      "http://velocitas.g9labs.com/api/v1/tracks",
+      "https://velocitas.herokuapp.com/api/v1/tracks",
       options
     ).on("error", (error) ->
       console.log("VelocitasApiUploader encountered an error:")

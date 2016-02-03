@@ -2,8 +2,9 @@ https = require "https"
 request = require "request"
 
 class CartoDbUploader
-  constructor: ->
-    @api_key = process.env.CARTO_DB_API_KEY || "test_key"
+  constructor: (@api_key) ->
+    @api_key = api_key || process.env.CARTO_DB_API_KEY
+    console.log("Booting with cartoDB api key: #{@api_key}")
   upload: (file, link, cb) ->
     console.log("CartoDbUploader initializing")
     payload = { "url": link }

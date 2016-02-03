@@ -4,7 +4,7 @@
   "description": "Email transformation for easy Strava upload via email API.",
   "main": "app.coffee",
   "engines": {
-    "node": "0.11.x"
+    "node": ">=0.12.x"
   },
   "dependencies": {
     "coffee-script": "~1.7.0",
@@ -21,13 +21,12 @@
   "devDependencies": {
     "chai": "~1.9.2",
     "dropbox-mock": "0.0.7",
-    "fakeweb": "0.0.1",
     "gulp": "^3.8.10",
     "gulp-mocha": "^2.0.0",
     "gulp-spawn-mocha": "^2.0.1",
     "gulp-watch": "^4.1.0",
     "mocha": "~1.12",
-    "node-fakeweb": "0.0.20",
+    "nock": "^7.0.2",
     "rewire": "~2.1.0",
     "sinon": "^1.12.2"
   },
